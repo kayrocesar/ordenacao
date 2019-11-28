@@ -4,76 +4,81 @@
 
 int busca(int v[],int x,int n)
 {
-    int e,d,m;
-
-    e=-1;
-    d=n;
-
-    while(e<d-1)
+    int retorno=0;
+    for(int i=0; i<n; i++)
     {
-
-        m=(e+d)/2;
-
-        if(v[m]<x)
+        if(v[i]==x)
         {
-            e=n;
+           retorno++;
+            break;
+        }
 
-        }
-        else
-        {
-            d=m;
-        }
     }
-
-    return v[d];
+    if(retorno==0){
+        return 0;
+    }
+    else{
+        return 1;
+    }
 
 }
 int main()
 {
     int num;
     int nums_proibidos;
-    int vetor_proibidos[10000];
-    int vetor_aux[10000];
+    int vetor_proibidos[100];
+    int vetor_aux[100];
     int cont=0;
     int i;
 
+
+
     scanf("%d",&nums_proibidos);
 
-
-    for(i=0; i<nums_proibidos; i++)
+    for(int i=0; i<nums_proibidos; i++)
     {
+
 
         scanf("%d",&vetor_proibidos[i]);
 
-
     }
-    i=0;
+    int j=0;
     while(scanf("%d",&num)!=EOF)
     {
 
-        vetor_aux[i]=num;
-        cont++;
-        i++;
 
+
+        vetor_aux[j]=num;
+        j++;
     }
 
-    for(int i=0; i<cont; i++)
+
+    for(int i=0; i<j; i++)
     {
 
-        int retorno=busca(vetor_proibidos,vetor_aux[i],cont);
+        int retorno=busca(vetor_proibidos,vetor_aux[i],nums_proibidos);
 
-        printf("%d\n",retorno);
-
-        if(retorno==vetor_aux[i])
+        if(retorno==1)
         {
+
             printf("sim\n");
+
         }
+
         else
         {
+
+
             printf("nao\n");
         }
 
     }
+
+
+
+
+
+
 
 
     return 0;
